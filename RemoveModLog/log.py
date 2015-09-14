@@ -22,7 +22,7 @@ def run_bot(target_subreddit):
 		#s = r.get_submission('http://www.reddit.com/' + comment.target_permalink)
 		#print(s.comments[0])
 		#print(dir(comment))
-		if comment.target_permalink not in cache:
+		if comment.target_permalink not in cache and comment.mod != comment.target_author:
 			h = '/u/' + comment.mod + ' が /u/' + comment.target_author + ' の ' + comment.target_permalink + ' のコメントを削除しました  \n'
 			s = r.get_submission('https://www.reddit.com' + comment.target_permalink)
 			if len(s.comments) > 0:
@@ -38,7 +38,7 @@ def run_bot(target_subreddit):
 	for link in removelink:
 		#print(link.target_permalink)
 		#print(dir(link))
-		if link.target_permalink not in cache:
+		if link.target_permalink not in cache and link.mod != link.target_author:
 			h = '/u/' + link.mod + ' が /u/' + link.target_author + ' の ' + link.target_permalink + ' のスレを削除しました  \n'
 			s = r.get_submission('https://www.reddit.com' + link.target_permalink)
 			text = str(s.selftext)

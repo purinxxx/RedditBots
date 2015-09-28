@@ -26,6 +26,7 @@ print('アイカツ画像読み込み成功')
 print(gazo)
 
 def run_bot(target_subreddit):
+	time.sleep(20)
 	subreddit = r.get_subreddit(target_subreddit)
 	comments = subreddit.get_comments(limit=25)
 	for comment in comments:
@@ -49,21 +50,12 @@ def reply_aikatsu(target_comment):
 while True:
 	try:
 		print(datetime.datetime.today().strftime("%x %X"))
-		print('yarou')
 		run_bot('yarou')
-		time.sleep(20)
-		print('newsokur')
 		run_bot('newsokur')
-		time.sleep(20)
-		print('japan_anime')
 		run_bot('japan_anime')
-		time.sleep(20)
-		print('BakaNewsJP')
 		run_bot('BakaNewsJP')
-		time.sleep(20)
-		print('newsokuvip')
 		run_bot('newsokuvip')
-		time.sleep(20)
+		run_bot('newsokunomoral')
 	except Exception as e:
 		print(e)
 		f = open('error.txt','a')

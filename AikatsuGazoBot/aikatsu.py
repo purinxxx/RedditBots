@@ -5,7 +5,7 @@ import datetime
 import locale
 
 r = praw.Reddit(user_agent = 'Ozora Akari')
-#r.login()
+print('login...')
 r.login()
 
 match = ['アイカツ']
@@ -28,7 +28,7 @@ print(gazo)
 def run_bot(target_subreddit):
 	time.sleep(20)
 	subreddit = r.get_subreddit(target_subreddit)
-	comments = subreddit.get_comments(limit=25)
+	comments = subreddit.get_comments(limit=50)
 	for comment in comments:
 		comment_text = comment.body.lower()
 		isMatch = any(string in comment_text for string in match)
@@ -56,6 +56,7 @@ while True:
 		run_bot('BakaNewsJP')
 		run_bot('newsokuvip')
 		run_bot('newsokunomoral')
+		run_bot('lowlevelaware')
 	except Exception as e:
 		print(e)
 		f = open('error.txt','a')
